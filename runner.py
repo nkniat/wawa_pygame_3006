@@ -20,6 +20,11 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+        # if event.type == pygame.MOUSEMOTION:
+        #     if player_rect.collidepoint(event.pos):
+        #         print("Zderzenie")
+        # if event.type == pygame.MOUSEBUTTONDOWN:
+        #     print("Nacisnieto klawisz myszy")
 
     screen.blit(background_surface, (0, 0))
 
@@ -35,8 +40,13 @@ while True:
 
     screen.blit(player_surface, player_rect)
 
-    if player_rect.colliderect(mushroom_rect):
-        print("Doszło do zderzenia")
+    # if player_rect.colliderect(mushroom_rect):
+    #     print("Doszło do zderzenia")
+
+    # mouse_pos = pygame.mouse.get_pos()
+    # if player_rect.collidepoint(mouse_pos):
+    #     print("Zderzenie z myszą")
+    #     print(pygame.mouse.get_pressed())
 
     pygame.display.update()
     clock.tick(60)  # framerate (60fps)
