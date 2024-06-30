@@ -16,10 +16,16 @@ while True:
             pygame.quit()
             exit()
 
-    #screen.blit(test_surface, (0, 0))
+    # screen.blit(test_surface, (0, 0))
 
-    pygame.draw.rect(screen, "White", (0, 50, 100, 100))
-    pygame.draw.line(screen, (128, 128, 128), (10, 200), (10, 300), 5)
+    # pygame.draw.rect(screen, "White", (0, 50, 100, 100))
+    # pygame.draw.line(screen, (128, 128, 128), (10, 200), (10, 300), 5)
+
+    # wypisywanie tekstu
+    font = pygame.font.SysFont("Arial", 24)
+    label = font.render("Hello World", 1, 'White')
+    screen.blit(label, (10, 10))
+
 
     pygame.display.update()
     clock.tick(60)  #framerate (60fps)
