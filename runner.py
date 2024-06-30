@@ -14,6 +14,7 @@ mushroom_rect = mushroom_surface.get_rect(topleft=(500, 300))
 
 player_surface = pygame.image.load('images_PG/girl_stay.png')
 player_rect = player_surface.get_rect(midbottom=(60, 360))
+player_gravity = 0
 
 while True:
     for event in pygame.event.get():
@@ -25,6 +26,10 @@ while True:
         #         print("Zderzenie")
         # if event.type == pygame.MOUSEBUTTONDOWN:
         #     print("Nacisnieto klawisz myszy")
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE and player_rect.bottom == 360:
+                #print("Skok - spacja")
+                player_gravity = -20
 
     screen.blit(background_surface, (0, 0))
 
@@ -38,8 +43,6 @@ while True:
     #screen.blit(mushroom_surface, (mushroom_pos_x, 300))
     screen.blit(mushroom_surface, mushroom_rect)
 
-    screen.blit(player_surface, player_rect)
-
     # if player_rect.colliderect(mushroom_rect):
     #     print("Doszło do zderzenia")
 
@@ -47,6 +50,18 @@ while True:
     # if player_rect.collidepoint(mouse_pos):
     #     print("Zderzenie z myszą")
     #     print(pygame.mouse.get_pressed())
+
+    player_gravity += 1
+    player_rect.y += player_gravity
+    if player_rect.bottom >= 360:
+        player_rect.bottom = 360
+    screen.blit(player_surface, player_rect)
+
+
+    # skakanie
+    # keys = pygame.key.get_pressed()
+    # if keys[pygame.K_SPACE]:
+    #     print("Nacisnieto spacje")
 
     pygame.display.update()
     clock.tick(60)  # framerate (60fps)
